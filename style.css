@@ -1,0 +1,792 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+ 
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow-y: auto;
+}
+
+/* Header */
+header {
+  background-color: white;
+  height: 15vh;
+  width: 100%; /* Use percentage for consistent layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow: hidden;
+}
+
+#logo {
+  width: 30%;
+  height: 15vh;
+}
+
+header #accounts {
+  text-decoration: none;
+  display: flex;
+}
+
+#accounts a {
+  margin-left: 1vw;
+  padding: 2vw;
+  border-radius: 50%;
+  
+  color:#46A941;
+}
+#call{
+  color: #46A941;
+}
+#contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#contact #phone {
+  margin-left: 2vw;
+  
+}
+
+/* Navigation Bar */
+nav {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%; /* Match to the container */
+}
+
+nav li {
+  list-style: none;
+}
+
+/* Remove the dropdown arrow (caret icon) */
+.nav-link.dropdown-toggle::after {
+  display: none;
+}
+li .dropdown-item{
+  font-size: small;
+}
+*/
+/* Navigation Bar */
+nav {
+
+  position: sticky; /* Keeps the navbar fixed at the top */
+  top: 0;
+  z-index: 100; /* Ensures it stays above other elements */
+  background-color: white; /* Add background to prevent transparency issues */
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for emphasis */
+}
+
+nav li {
+  list-style: none;
+  position: relative;/* Needed for the hover effect positioning */
+}
+
+nav a{
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem; /* Adjust size as needed */
+  padding: 10px 20px;
+  display: inline-block;
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+nav .nav-link:hover {
+  color:#8FD6E9; /* Change link color on hover */
+}
+
+/* Line Above Links on Hover */
+nav a::before {
+  content: "";
+  position: absolute;
+  top: -5px; /* Adjust this value to position the line above the link */
+  left: 50%;
+  transform: translateX(-50%) scaleX(0); /* Start line hidden */
+  width: 80%; /* Adjust line width as needed */
+  height: 3px;
+  background-color: black; /* Line color */
+  transition: transform 0.3s ease; /* Smooth expand effect */
+  transform-origin: center;
+}
+
+nav .nav-link:hover::before {
+  transform: translateX(-50%) scaleX(1); /* Show the line on hover */
+}
+
+/* Hero Section */
+.carousel {
+  position: relative;
+  max-width: 100%; 
+  margin: auto;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  position: relative;
+  min-width: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 90vh;
+  object-fit: cover;
+}
+
+/* Black Overlay */
+.slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  z-index: 1;
+}
+
+/* Text Overlay */
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; /* White text to contrast with black overlay */
+  font-size: 2vw;
+  font-weight: bold;
+  text-align: center;
+  z-index: 2; /* Ensures text is above the black overlay */
+}
+
+.text-overlay button {
+  background: linear-gradient(45deg, #46A941, #89BFE2); 
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.5vw;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.text-overlay #welcome{
+  font-size: 5vw; /* Adjust font size for responsiveness */
+  font-weight: bold;
+  color:#ddd;
+}
+
+/* Navigation Arrows */
+.nav {
+  position: absolute;
+  top: 50%;
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 3; /* Above overlay and text */
+}
+
+.nav button {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: whitesmoke;
+  font-size: 18px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.nav button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Main Grid Container */
+.grid-container {
+ 
+  margin-top: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  max-width: 100vw;
+  max-height: 140vh;
+  margin: auto;
+  
+}
+/* 
+/* Left Column for Water Drops */
+.drops-column {
+  width: 50vw;
+  display: grid;
+  grid-template-areas:
+    "left right"
+    "center center"; /* Position the bottom drop in the center */
+  grid-template-rows: 1fr 1fr;
+  gap: 20px; /* Space between drops */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+  
+}
+
+/* Drop Shapes */
+.drop {
+  width: 100px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.drop1 {
+  width: 250px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drop svg {
+  width: 100%;
+  height: 100%;
+ 
+}
+
+.upper-left {
+  
+  margin-top:1vh;
+  margin-right: 8vw;
+  grid-area: left;
+  justify-self: start; /* Align to the top-left */
+}
+
+.upper-right {
+  margin-top:5vh;
+
+  grid-area: right;
+  justify-self: end; /* Align to the top-right */
+}
+
+.bottom-center {
+  position: absolute;
+  
+  margin-left:1vw;
+  margin-bottom: 15vh;
+  grid-area: center;
+  justify-self: center;
+  align-items: end; /* Center-align the bottom drop */
+}
+
+/* Right Column for Text */
+.grid-text {
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+ 
+}
+
+.grid-text h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+.grid-text p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+.grid-text button {
+  width: 12vw;
+  height: 8vh;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #8bc34a;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.grid-text button:hover {
+  background-color: #689f38;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr ; /* Stack columns vertically */
+  }
+
+  .drops-column {
+    grid-template-areas:
+      "center"
+      "left"
+      "right"; /* Stack drops vertically */
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .grid-text {
+    text-align: center;
+  }
+}
+ #drop-clip-2 path{
+  background-color: #46A941;
+
+}
+.drops-column{
+ 
+  height: 80vh;
+  position: relative;
+}
+
+/* projects section */
+
+
+.slider {
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border: 2px solid #333;
+  border-radius: 8px;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  width: calc(300px * 5); /* Width of 5 cards */
+  animation: slide 5s linear infinite; /* 5s for 5 cards */
+}
+
+.card {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ddd;
+  border-right: 2px solid #ccc;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Keyframe animation for sliding effect */
+@keyframes slide {
+  0% {
+      transform: translateX(0);
+  }
+  20% {
+      transform: translateX(0);
+  }
+  25% {
+      transform: translateX(-300px);
+  }
+  45% {
+      transform: translateX(-300px);
+  }
+  50% {
+      transform: translateX(-600px);
+  }
+  70% {
+      transform: translateX(-600px);
+  }
+  75% {
+      transform: translateX(-900px);
+  }
+  95% {
+      transform: translateX(-900px);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+/* slider container */
+.projects{
+border-radius: 50px;
+background-color: #fff;
+
+}
+
+center p{
+  text-align: center;
+  text-transform: capitalize;
+  font-size: xx-large;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color:#46A941;
+}
+center{
+ color:grey;
+ text-transform: capitalize;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ 
+}
+
+.custom-slider-container {
+  position: relative;
+  width: 100vw; /* Full width */
+  overflow: hidden;
+  margin-top: 10vh;
+}
+
+.custom-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.custom-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.custom-card {
+  flex: 0 0 200px; /* Each card takes a fixed width */
+  margin: 0 10px; /* Gaps between cards */
+  height: 250px;
+  background: #ddd;
+  border-radius: 10px;
+  display: flex;
+  /* filter: blur(10px); */
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, margin 0.3s;
+}
+
+/* Focused card styles */
+.custom-card.focused {
+  transform: scale(1.2); 
+  margin: 0 20px; 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10; 
+}
+
+/* Navigation buttons */
+.custom-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.custom-nav.custom-prev {
+  left: 10px;
+}
+
+.custom-nav.custom-next {
+  right: 10px;
+} 
+
+
+
+/* map section */
+
+iframe{
+  width: 90vw;
+  height: 100vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  margin-left: 3vw;
+  margin-right: 5vw;
+  
+  
+}
+
+/* cards image section */
+
+  
+.card-sec {
+  padding: 15px;
+  width: 100vw;
+  height: 120vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  margin-right: 5vw; 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+ 
+ 
+}
+
+#card1{
+margin: 20px;
+ grid-column: 1/3;
+  height: 50vh;
+  position: relative;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border-radius: 5px; 
+  filter: blur(1px);
+}
+
+
+
+/* Card styling with box shadow */
+ #card2, #card3, #card4, #card5 {
+  margin: 20px;
+  position: relative;
+  height: 50vh;
+  overflow: hidden;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25); 
+  border-radius: 5px; 
+  background-color: #ffffff; 
+  margin-bottom: 5vh;
+ }
+#card1 img, #card2 img, #card3 img, #card4 img, #card5 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+  
+
+.overlay-bottom-text {
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  width: 100%; 
+  color: white;
+  background: linear-gradient(360deg, #223025 0%, rgba(0, 0, 0, 0) 100%); /* Gradient background */
+  padding: 10px 20px; 
+  text-align: left; 
+  font-size: 1rem; 
+  z-index: 10;
+}
+
+/* Container to align the progress circles */
+
+
+
+
+.progress-wrapper {
+  display: flex;
+  gap: 10vw; /* Gap between the circles */
+  align-items: center;
+  width: 90vw;
+  margin: 5vw;
+  
+}
+
+.progress-container {
+  text-align: center;
+}
+
+.circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(
+    transparent 0deg,
+    currentColor 0deg
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: white;
+}
+
+.circle.yellow {
+  color: #ffea00;
+  height: 30vh;
+  width: 15vw;
+ 
+}
+
+.circle.orange {
+  color: #ff5722;
+  height: 30vh;
+  width: 15vw;
+  
+}
+
+.circle.red {
+  color: #800000;
+  height: 30vh;
+  width: 15vw;
+ 
+}
+
+.circle .number {
+  position: absolute;
+  color: white;
+  font-size: 1.5rem;
+}
+
+p {
+  margin-top: 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+span p{
+  text-align: start;
+}
+.complaints center{
+  font-size: xx-large;
+  text-transform: uppercase;
+  color:#89BFE2;
+}
+/*section threeD*/
+
+.threeD{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000; /* Optional dark background */
+  overflow: hidden;
+}
+
+/* Container Styles */
+.container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: rotate 50s linear infinite;
+}
+
+/* Individual Span Styles */
+.container span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(300px);
+}
+
+/* Image Styles */
+.container span img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px; /* Optional styling for rounded edges */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation Keyframes */
+@keyframes rotate {
+  0% {
+      transform: perspective(1000px) rotateY(0deg);
+  }
+  100% {
+      transform: perspective(1000px) rotateY(360deg);
+  }
+}
+
+
+
+.projects-section {
+  border-radius: 50px;
+  background-color: #fff;
+}
+
+.centered-text p {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: xx-large;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #46A941;
+}
+
+.centered-text {
+  color: grey;
+  text-transform: capitalize;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  margin-top: 10vh;
+}
+
+.carousel-inner {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  flex: 0 0 200px;
+  margin: 0 10px;
+  height: 250px;
+  background: #ddd;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, margin 0.3s;
+}
+
+/* Highlighted card styles */
+.carousel-item.highlighted {
+  transform: scale(1.2);
+  margin: 0 20px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Navigation buttons */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.carousel-nav.carousel-prev {
+  left: 10px;
+}
+
+.carousel-nav.carousel-next {
+  right: 10px;
+}
