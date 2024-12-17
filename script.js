@@ -1,3 +1,6 @@
+
+
+
 const slides = document.querySelector('.slides');
 const slideCount = document.querySelectorAll('.slide').length;
 let currentIndex = 0;
@@ -113,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
           let progress = 0;
   
           const interval = setInterval(() => {
-            progress += 90;
+            progress += 180;
   
             // Update the circle's background
             circle.style.background = `conic-gradient(
@@ -135,93 +138,21 @@ document.addEventListener("DOMContentLoaded", () => {
   
     circles.forEach((circle) => observer.observe(circle));
   });
-  
-  
 
 
+  
+  
+ 
+  
 
-  const carouselContainer = document.querySelector('.carousel-container');
-  const carouselItems = document.querySelectorAll('.carousel-item');
-  const carouselPrevBtn = document.querySelector('.carousel-prev');
-  const carouselNextBtn = document.querySelector('.carousel-next');
+  const menuIcon = document.getElementById('menu-icon');
+  const navLinks = document.querySelectorAll('nav li');
   
-  const itemWidth = 200; // Each card's width (in pixels)
-  const itemMargin = 20; // Margin between cards (in pixels)
-  const totalItems = carouselItems.length;
-  const totalItemWidth = itemWidth + itemMargin * 2;
-  
-  // Clone the first and last few cards for seamless looping
-  for (let i = 0; i < totalItems; i++) {
-      const firstClone = carouselItems[i].cloneNode(true);
-      const lastClone = carouselItems[totalItems - 1 - i].cloneNode(true);
-      carouselContainer.appendChild(firstClone); // Add to the end
-      carouselContainer.prepend(lastClone); // Add to the start
-  }
-  
-  const clonedItems = document.querySelectorAll('.carousel-item'); // Update card list after cloning
-  const visibleItems = Math.floor(window.innerWidth / totalItemWidth); // Number of visible cards
-  let currentCarouselIndex = totalItems; // Start at the first real card
-  
-  // Initial slider position
-  carouselContainer.style.transform = `translateX(${-currentCarouselIndex * totalItemWidth}px)`;
-  
-  // Update the slider position
-  function updateCarouselPosition() {
-      carouselContainer.style.transition = 'transform 0.5s ease-in-out';
-      const offset = -(currentCarouselIndex * totalItemWidth);
-      carouselContainer.style.transform = `translateX(${offset}px)`;
-  
-      // Highlight the focused card
-      clonedItems.forEach((item, index) => {
-          item.classList.toggle(
-              'highlighted',
-              index === currentCarouselIndex + Math.floor(visibleItems / 2) - 1
-          );
+  menuIcon.addEventListener('click', () => {
+      navLinks.forEach(link => {
+          link.classList.toggle('show');
       });
-  }
-  
-  // Reset position after transitioning to a clone
-  function resetCarouselPosition() {
-      if (currentCarouselIndex >= totalItems * 2) {
-          carouselContainer.style.transition = 'none';
-          currentCarouselIndex = totalItems; // Reset to the first real card
-          carouselContainer.style.transform = `translateX(${-currentCarouselIndex * totalItemWidth}px)`;
-      } else if (currentCarouselIndex < totalItems) {
-          carouselContainer.style.transition = 'none';
-          currentCarouselIndex = totalItems * 2 - 1; // Reset to the last real card
-          carouselContainer.style.transform = `translateX(${-currentCarouselIndex * totalItemWidth}px)`;
-      }
-  }
-  
-  // Loop functionality
-  function loopCarousel() {
-      currentCarouselIndex++;
-      updateCarouselPosition();
-      setTimeout(resetCarouselPosition, 500); // Reset after transition ends
-  }
-  
-  // Auto-slide every 2 seconds
-  let carouselInterval = setInterval(loopCarousel, 2000);
-  
-  // Add event listeners for buttons
-  carouselNextBtn.addEventListener('click', () => {
-      clearInterval(carouselInterval); // Stop auto-slide when manually navigating
-      currentCarouselIndex++;
-      updateCarouselPosition();
-      setTimeout(resetCarouselPosition, 500); // Reset after transition ends
-      carouselInterval = setInterval(loopCarousel, 2000); // Restart auto-slide
   });
-  
-  carouselPrevBtn.addEventListener('click', () => {
-      clearInterval(carouselInterval); // Stop auto-slide when manually navigating
-      currentCarouselIndex--;
-      updateCarouselPosition();
-      setTimeout(resetCarouselPosition, 500); // Reset after transition ends
-      carouselInterval = setInterval(loopCarousel, 2000); // Restart auto-slide
-  });
-  
-  // Initial setup
-  updateCarouselPosition();
-  
 
+ 
   

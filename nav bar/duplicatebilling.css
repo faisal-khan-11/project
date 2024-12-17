@@ -1,0 +1,43 @@
+#input1{
+    display: flex;
+    align-items: center;
+    width: 70vw;
+    height: 10vh;
+    margin-left: 20vw;
+    background-color: #FDFDFD;
+    padding-left: 15px;
+
+}
+#input1 input{
+   
+    width: 60vw;
+    height: 6vh;
+    background-color: #FFFFFF;
+    margin-left: 2vw;
+    border-radius: 10px;
+    border: 0.5px solid black;
+}
+input:hover{
+    border: 2px solid aqua;
+}
+
+section{
+   background-color: #F6F6F6;
+   height: 50vh;
+   border-radius: 10px;
+}
+#btn button{
+   height: 5vh;
+   width: 8vw;
+    background-color: #0099E6;
+    border-radius: 5px;
+    border: none;
+}
+hr{
+    width: 80vw;
+   
+}
+.text{
+    margin-top: 5vh;
+    padding-top: 5vh;
+}

@@ -1,0 +1,369 @@
+.container {
+    margin-top: 15vh;
+}
+
+
+.container img {
+    height: 70vh;
+    /* Default height for larger screens */
+    width: 80vw;
+    /* Default width for larger screens */
+    margin-top: 10vh;
+    margin-right: 3vw;
+    margin-bottom: 3vw;
+    margin-left: 5vw;
+    object-fit: cover;
+    /* Ensures the image scales without distortion */
+}
+
+.container center {
+    margin-top: 1vh;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .container img {
+        height: auto;
+        /* Let the height adjust automatically */
+        width: 90vw;
+        /* Use more of the viewport width */
+        margin-top: 5vh;
+        /* Reduce the margin for smaller screens */
+        margin-right: 0;
+        /* Eliminate extra right margin */
+        margin-bottom: 2vh;
+        /* Adjust bottom margin */
+    }
+}
+
+
+/* footer */
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Responsive columns */
+    gap: 20px;
+    /* Space between columns */
+    background-color: #004954;
+    color: #fff;
+    padding: 20px;
+    /* Add padding for better spacing */
+}
+
+.footer-column {
+    text-align: left;
+}
+
+.footer-column h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.footer3 h6 a {
+    color: #ffff;
+    text-decoration: none;
+}
+
+#accountss {
+    display: flex;
+    gap: 15px;
+    /* Space between icons */
+    align-items: center;
+}
+
+#accountss a {
+    color: #46A941;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+#accountss a:hover {
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        grid-template-columns: 1fr;
+        /* Single-column layout on mobile */
+        text-align: center;
+        /* Center content for better mobile presentation */
+    }
+
+    #accountss {
+        justify-content: center;
+    }
+
+    .footer-column {
+        margin-bottom: 20px;
+        /* Add spacing between sections */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .footer {
+        grid-template-columns: repeat(2, 1fr);
+        /* Two-column layout for tablets */
+    }
+}
+
+nav {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav li {
+    list-style: none;
+    position: relative;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+nav .nav-link:hover {
+    color: #8FD6E9;
+}
+
+nav a::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 3px;
+    background-color: black;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+}
+
+nav .nav-link:hover::before {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.menu {
+    display: none;
+    /* Initially hide the menu icon */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.menu i {
+    font-size: 24px;
+    /* Adjust icon size as needed */
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        height: auto;
+        position: static;
+    }
+
+    .dropdown-item {
+        text-transform: capitalize;
+        font-size: xx-small;
+    }
+
+    nav .nav-link:hover {
+        color: 0.5px greenyellow;
+    }
+
+    nav li {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+    }
+
+    .nav-link {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: start;
+    }
+
+}
+
+@media (max-width:768px) {
+    .main {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+.menu {
+    position: fixed;
+    top: 10px;
+    /* Adjust the top margin as needed */
+    left: 10px;
+    /* Adjust the left margin as needed */
+    z-index: 100;
+    /* Ensure it's above other elements */
+}
+
+
+nav li.show {
+    display: block;
+    text-align: start;
+}
+
+#logo {
+    height: 50px;
+    /* Adjust logo height as needed */
+}
+/* 
+
+.form {
+    height: auto; /* Adjust height based on content */
+    width: 80vw;
+    margin: auto; /* Center the form horizontally and vertically */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+}
+
+.input1, .input2 {
+    display: flex;
+    justify-content: space-between; /* Align inputs side-by-side with space between */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin-top: 2vh;
+}
+
+.input1 input, .input2 input {
+    width: 48%; /* Each input takes up half the row */
+    padding-left: 1vw;
+    box-sizing: border-box; /* Prevent overflow */
+}
+
+.input3 textarea {
+    width: 100%; /* Textarea occupies the full width */
+    height: 20vh;
+    margin-top: 4vh;
+    padding-left: 1vw;
+    box-sizing: border-box;
+}
+
+center button {
+    margin-top: 4vh;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-image: linear-gradient(to right, #e5dae1, #09ee8b);
+    color: #fff;
+    height: 10vh;
+    width: 30vw;
+}
+
+/* Focus Effects */
+.input1 input:focus,
+.input2 input:focus,
+.input3 textarea:focus,
+center button:focus {
+    border: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(45deg, #ff6a00, #ee0979);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+/* Responsive Design */
+.form {
+    width: 80vw;
+    margin: auto; /* Center the form horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh; /* Add space between rows */
+}
+
+.input1, .input2 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Ensure rows take full form width */
+}
+
+.input1 input, .input2 input {
+    width: 40%; /* Each input takes half of the row */
+    padding: 1vh 1vw;
+    box-sizing: border-box;
+}
+.input1 input{
+    margin-left: 2vw;
+}
+
+.input3 {
+    width: 100%; /* Ensure textarea takes full width */
+    margin-top: 2vh;
+    display: flex;
+    
+}
+
+.input3 textarea {
+    width: 92%;
+    height: 20vh;
+    padding: 1vw;
+   margin-left: 6vw;
+    box-sizing: border-box;
+    
+}
+
+center button {
+    margin-top: 2vh;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-image: linear-gradient(to right, #e5dae1, #09ee8b);
+    color: #fff;
+    height: 10vh;
+    width: 30vw;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .input1, .input2 {
+        flex-direction: column; /* Stack inputs vertically */
+        gap: 1vh; /* Add space between stacked inputs */
+    }
+
+    .input1 input, .input2 input {
+        width: 100%; /* Inputs take full width when stacked */
+    }
+
+    center button {
+        width: 50vw; /* Adjust button size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    center button {
+        width: 70vw; /* Further adjust button for smaller screens */
+    }
+}

@@ -1,0 +1,205 @@
+
+
+.container img {
+    height: 70vh; /* Default height for larger screens */
+    width: 80vw; /* Default width for larger screens */
+    margin-top: 10vh;
+    margin-right: 3vw;
+    margin-bottom: 3vw;
+    object-fit: cover; /* Ensures the image scales without distortion */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .container img {
+        height: auto; /* Let the height adjust automatically */
+        width: 90vw; /* Use more of the viewport width */
+        margin-top: 5vh; /* Reduce the margin for smaller screens */
+        margin-right: 0; /* Eliminate extra right margin */
+        margin-bottom: 2vh; /* Adjust bottom margin */
+    }
+}
+
+ 
+  /* footer */
+  
+  .footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between columns */
+    background-color: #004954;
+    color: #fff;
+    padding: 20px; /* Add padding for better spacing */
+  }
+  
+  .footer-column {
+    text-align: left;
+  }
+  
+  .footer-column h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+  .footer3 h6 a{
+    color: #ffff;
+    text-decoration: none;
+  }
+  
+  #accountss {
+    display: flex;
+    gap: 15px; /* Space between icons */
+    align-items: center;
+  }
+  
+  #accountss a {
+    color: #46A941;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+  }
+  
+  #accountss a:hover {
+    color: #fff;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer {
+      grid-template-columns: 1fr; /* Single-column layout on mobile */
+      text-align: center; /* Center content for better mobile presentation */
+    }
+  
+    #accountss {
+      justify-content: center;
+    }
+  
+    .footer-column {
+      margin-bottom: 20px; /* Add spacing between sections */
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .footer {
+      grid-template-columns: repeat(2, 1fr); /* Two-column layout for tablets */
+    }
+  }
+  
+  nav {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav li {
+    list-style: none;
+    position: relative;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: color 0.3s ease;
+  }
+  
+  nav .nav-link:hover {
+    color: #8FD6E9;
+  }
+  
+  nav a::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 3px;
+    background-color: black;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+  }
+  
+  nav .nav-link:hover::before {
+    transform: translateX(-50%) scaleX(1);
+  }
+  
+  .menu {
+    display: none; /* Initially hide the menu icon */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .menu i {
+    font-size: 24px; /* Adjust icon size as needed */
+  }
+  
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      height: auto;
+      position: static;
+    }
+    .dropdown-item{
+      text-transform: capitalize;
+      font-size: xx-small;
+    }
+    nav .nav-link:hover {
+      color: 0.5px greenyellow;
+    }
+  
+    nav li {
+      display: none;
+    }
+  
+    .menu {
+      display: flex;
+    }
+    .nav-link{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      align-items: start;
+    }
+  
+  }
+  @media (max-width:768px) {
+    .main{
+     display: grid;
+     grid-template-columns: 1fr;
+    }
+ }
+  
+  .menu {
+    position: fixed;
+    top: 10px; /* Adjust the top margin as needed */
+    left: 10px; /* Adjust the left margin as needed */
+    z-index: 100; /* Ensure it's above other elements */
+  }
+  
+  
+  nav li.show {
+    display: block;
+    text-align: start;
+  }
+  #logo {
+    height: 50px; /* Adjust logo height as needed */
+  }  

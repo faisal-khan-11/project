@@ -12,12 +12,13 @@ body {
 
 /* Header */
 header {
+  margin-top: 10VH;
   background-color: white;
   height: 15vh;
   width: 100%; /* Use percentage for consistent layout */
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   overflow: hidden;
 }
 
@@ -58,71 +59,107 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 100%; /* Match to the container */
-}
-
-nav li {
-  list-style: none;
-}
-
-/* Remove the dropdown arrow (caret icon) */
-.nav-link.dropdown-toggle::after {
-  display: none;
-}
-li .dropdown-item{
-  font-size: small;
-}
-*/
-/* Navigation Bar */
-nav {
-
-  position: sticky; /* Keeps the navbar fixed at the top */
-  top: 0;
-  z-index: 100; /* Ensures it stays above other elements */
-  background-color: white; /* Add background to prevent transparency issues */
-  height: 15vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
   width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for emphasis */
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav li {
   list-style: none;
-  position: relative;/* Needed for the hover effect positioning */
+  position: relative;
 }
 
-nav a{
+nav a {
   text-decoration: none;
   color: black;
-  font-size: 1.5rem; /* Adjust size as needed */
+  font-size: 1.5rem;
   padding: 10px 20px;
   display: inline-block;
-  transition: color 0.3s ease; /* Smooth color transition */
+  transition: color 0.3s ease;
 }
 
 nav .nav-link:hover {
-  color:#8FD6E9; /* Change link color on hover */
+  color: #8FD6E9;
 }
 
-/* Line Above Links on Hover */
 nav a::before {
   content: "";
   position: absolute;
-  top: -5px; /* Adjust this value to position the line above the link */
+  top: -5px;
   left: 50%;
-  transform: translateX(-50%) scaleX(0); /* Start line hidden */
-  width: 80%; /* Adjust line width as needed */
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
   height: 3px;
-  background-color: black; /* Line color */
-  transition: transform 0.3s ease; /* Smooth expand effect */
+  background-color: black;
+  transition: transform 0.3s ease;
   transform-origin: center;
 }
 
 nav .nav-link:hover::before {
-  transform: translateX(-50%) scaleX(1); /* Show the line on hover */
+  transform: translateX(-50%) scaleX(1);
 }
+
+.menu {
+  display: none; /* Initially hide the menu icon */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menu i {
+  font-size: 24px; /* Adjust icon size as needed */
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    position: static;
+  }
+  .dropdown-item{
+    text-transform: capitalize;
+    font-size: xx-small;
+  }
+  nav .nav-link:hover {
+    color: 0.5px greenyellow;
+  }
+
+  nav li {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+  }
+  .nav-link{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 10px; /* Adjust the top margin as needed */
+  left: 10px; /* Adjust the left margin as needed */
+  z-index: 100; /* Ensure it's above other elements */
+}
+
+
+nav li.show {
+  display: block;
+  text-align: start;
+}
+#logo {
+  height: 50px; /* Adjust logo height as needed */
+}
+
+
+
 
 /* Hero Section */
 .carousel {
@@ -328,25 +365,87 @@ nav .nav-link:hover::before {
 .grid-text button:hover {
   background-color: #689f38;
 }
+/* Main Grid Container */
+ .grid-container {
+  margin-top: 4px;
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for smaller screens */
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  max-width: 100vw;
+  max-height: 140vh;
+  margin: auto;
+} 
 
-/* Responsive Design */
-@media (max-width: 768px) {
+
+
+/* Responsive Grid Layout */
+@media (min-width: 768px) {
   .grid-container {
-    grid-template-columns: 1fr ; /* Stack columns vertically */
-  }
-
-  .drops-column {
-    grid-template-areas:
-      "center"
-      "left"
-      "right"; /* Stack drops vertically */
-    grid-template-rows: repeat(3, auto);
-  }
-
-  .grid-text {
-    text-align: center;
+      grid-template-columns: 1fr 1fr;
   }
 }
+
+
+/* Additional Responsive Adjustments */
+@media (max-width: 768px) {
+  /* Adjust font sizes and spacing for smaller screens */
+  .grid-text h1 {
+      font-size: 1.8rem;
+  }
+
+  .grid-text p {
+      font-size: 1rem;
+  }
+
+ 
+  .drop, .drop1 {
+      width: 80%; /* Adjust width as needed */
+      height: 30%;
+  }
+  .grid-text button{
+    width: 50vw;
+    height: auto;
+  }
+}
+
+
+/* Slider (Responsive) */
+.slider {
+  width: 100%; /* Adjust width to fit the screen */
+  height: auto; /* Adjust height accordingly */
+}
+
+.slider-track {
+  width: calc(100% * 5); /* Adjust width based on card width */
+ 
+}
+
+.card {
+  flex: 0 0 100%; /* Ensure cards take full width */
+  /* ... other card styles ... */
+}
+
+/* Additional Responsive Adjustments */
+@media (max-width: 768px) {
+  /* Adjust font sizes and spacing for smaller screens */
+  .grid-text h1 {
+      font-size: 1.8rem;
+  }
+
+  .grid-text p {
+      font-size: 1rem;
+  }
+
+  /* Adjust drop sizes and positions for smaller screens */
+  .drop, .drop1 {
+      width: 80%; /* Adjust width as needed */
+      height: auto;
+  }
+}
+
+
  #drop-clip-2 path{
   background-color: #46A941;
 
@@ -518,11 +617,25 @@ iframe{
   
   
 }
+.iframe-container {
+  position: relative;
+  padding-bottom: 56.25%; /* Aspect ratio of the map (height / width) */
+  height: 0;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 /* cards image section */
 
   
-.card-sec {
+ .card-sec {
   padding: 15px;
   width: 100vw;
   height: 120vh;
@@ -577,6 +690,48 @@ margin: 20px;
   text-align: left; 
   font-size: 1rem; 
   z-index: 10;
+} 
+
+
+/* Responsive Adjustments */
+
+@media (max-width: 768px) {
+  .card-sec {
+    grid-template-columns: repeat(1, 1fr); /* Single-column layout for small screens */
+    gap: 15px; /* Adjust gap between cards */
+    margin-right: 0; /* Remove extra margin on small screens */
+  }
+
+  #card1 {
+    grid-column: span 1; /* Stack #card1 in a single column */
+    height: auto; /* Let height adjust automatically */
+    filter: blur(0); /* Remove blur for better visibility on small screens */
+  }
+
+  #card2, #card3, #card4, #card5 {
+    height: auto; /* Allow cards to adjust their height naturally */
+  }
+
+  .overlay-bottom-text {
+    font-size: 0.9rem; /* Slightly smaller text for better fit */
+    padding: 10px; /* Adjust padding for small screens */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card-sec {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+    gap: 20px;
+  }
+
+  #card1 {
+    grid-column: span 2; /* Span #card1 across two columns for tablets */
+    height: 40vh; /* Adjust height for better proportions */
+  }
+
+  #card2, #card3, #card4, #card5 {
+    height: 35vh; /* Reduce card height for tablets */
+  }
 }
 
 /* Container to align the progress circles */
@@ -654,139 +809,129 @@ span p{
   text-transform: uppercase;
   color:#89BFE2;
 }
-/*section threeD*/
+@media (max-width: 768px) {
+  .progress-wrapper {
+    flex-direction: column; /* Stack the circles vertically for smaller screens */
+    gap: 5vh; /* Reduce the gap between the circles */
+    align-items: center; /* Center the circles in the column */
+    width: 100%; /* Take full width for better fit */
+    margin: 5vh auto; /* Center the wrapper */
+  }
 
-.threeD{
-  margin: 0;
+  .circle {
+    width: 70px; /* Smaller circle size for mobile */
+    height: 70px;
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  .circle.yellow,
+  .circle.orange,
+  .circle.red {
+    width: 20vw; /* Relative width for consistent scaling */
+    height: 20vw;
+  }
+
+  .circle .number {
+    font-size: 1.2rem; /* Reduce font size slightly */
+  }
+
+  p {
+    font-size: 0.9rem; /* Adjust paragraph size */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .progress-wrapper {
+    gap: 5vw; /* Reduce the gap slightly for tablets */
+    width: 100%; /* Use full width */
+  }
+
+  .circle.yellow,
+  .circle.orange,
+  .circle.red {
+    width: 12vw; /* Slightly smaller width for tablets */
+    height: 12vw;
+  }
+
+  .circle .number {
+    font-size: 1.3rem; /* Adjust font size for better readability */
+  }
+
+  p {
+    font-size: 1rem; /* Ensure readability on tablets */
+  }
+}
+
+/* footer */
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+  gap: 20px; /* Space between columns */
+  background-color: #004954;
+  color: #fff;
+  padding: 20px; /* Add padding for better spacing */
+}
+
+.footer-column {
+  text-align: left;
+}
+
+.footer-column h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+.footer3 h6 a{
+  color: #ffff;
+  text-decoration: none;
+}
+
+#accountss {
   display: flex;
-  justify-content: center;
+  gap: 15px; /* Space between icons */
   align-items: center;
-  height: 100vh;
-  background: #000; /* Optional dark background */
-  overflow: hidden;
 }
 
-/* Container Styles */
-.container {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  transform-style: preserve-3d;
-  transform: perspective(1000px);
-  animation: rotate 50s linear infinite;
-}
-
-/* Individual Span Styles */
-.container span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transform: rotateY(calc(var(--i) * 45deg)) translateZ(300px);
-}
-
-/* Image Styles */
-.container span img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px; /* Optional styling for rounded edges */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Animation Keyframes */
-@keyframes rotate {
-  0% {
-      transform: perspective(1000px) rotateY(0deg);
-  }
-  100% {
-      transform: perspective(1000px) rotateY(360deg);
-  }
-}
-
-
-
-.projects-section {
-  border-radius: 50px;
-  background-color: #fff;
-}
-
-.centered-text p {
-  text-align: center;
-  text-transform: capitalize;
-  font-size: xx-large;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+#accountss a {
   color: #46A941;
-}
-
-.centered-text {
-  color: grey;
-  text-transform: capitalize;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.carousel-wrapper {
-  position: relative;
-  width: 100vw;
-  overflow: hidden;
-  margin-top: 10vh;
-}
-
-.carousel-inner {
-  overflow: hidden;
-  width: 100%;
-}
-
-.carousel-container {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-  flex: 0 0 200px;
-  margin: 0 10px;
-  height: 250px;
-  background: #ddd;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s, margin 0.3s;
+  transition: color 0.3s;
 }
 
-/* Highlighted card styles */
-.carousel-item.highlighted {
-  transform: scale(1.2);
-  margin: 0 20px;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  z-index: 10;
+#accountss a:hover {
+  color: #fff;
 }
 
-/* Navigation buttons */
-.carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #fff;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    grid-template-columns: 1fr; /* Single-column layout on mobile */
+    text-align: center; /* Center content for better mobile presentation */
+  }
+
+  #accountss {
+    justify-content: center;
+  }
+
+  .footer-column {
+    margin-bottom: 20px; /* Add spacing between sections */
+  }
 }
 
-.carousel-nav.carousel-prev {
-  left: 10px;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer {
+    grid-template-columns: repeat(2, 1fr); /* Two-column layout for tablets */
+  }
 }
 
-.carousel-nav.carousel-next {
-  right: 10px;
-}
+
